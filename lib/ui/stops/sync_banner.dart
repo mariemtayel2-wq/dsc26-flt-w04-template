@@ -10,11 +10,20 @@ class SyncBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      color: pendingCount == 0 ? Colors.green.shade100 : Colors.orange.shade100,
-      padding: const EdgeInsets.only(left: 16, top: 8, bottom: 8),
-      child: Text(pendingCount == 0 ? 'Synced' : '$pendingCount pending'),
+    final message = pendingCount == 0 ? 'Synced' : '$pendingCount pending';
+    
+    return Semantics(
+      key: const Key('sync-banner'), 
+      liveRegion: true, 
+            child: Container(
+        width: double.infinity,
+        color: pendingCount == 0 ? Colors.green.shade100 : Colors.orange.shade100,
+        padding: const EdgeInsetsDirectional.only(start: 16, top: 8, bottom: 8, end: 16),
+        child: Text(
+          message,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
     );
   }
 }

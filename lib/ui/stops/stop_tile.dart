@@ -26,13 +26,12 @@ class StopTile extends StatelessWidget {
       StopStatus.failed => Colors.red.shade700,
     };
     return SizedBox(
-      height: 64,
       child: InkWell(
         onTap: onTap,
         child: Stack(
           children: [
-            Positioned(
-              left: 12,
+            PositionedDirectional(
+              start: 12,
               top: 26,
               child: Container(
                 key: Key('stop-dot-${stop.id}'),
@@ -42,25 +41,24 @@ class StopTile extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 36, right: 48),
+              padding: const EdgeInsetsDirectional.only(start: 36, end: 48),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(stop.customerName,
                       style: const TextStyle(fontWeight: FontWeight.bold)),
-                  Text(stop.address, maxLines: 1),
+                  Text(stop.address,),
                 ],
               ),
             ),
-            Positioned(
-              right: 8,
-              top: 16,
+            PositionedDirectional(
+              end: 8,
               child: IconButton(
                 key: Key('call-${stop.id}'),
                 icon: const Icon(Icons.call, size: 18),
                 padding: EdgeInsets.zero,
-                constraints: BoxConstraints.tight(const Size(32, 32)),
+                tooltip: 'Call ${stop.customerName}',
                 onPressed: onCall,
               ),
             ),

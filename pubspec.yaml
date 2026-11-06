@@ -7,8 +7,8 @@ version: 1.0.0
 # The grader ignores this file and uses its own copy with exactly these pins.
 
 environment:
-  sdk: ^3.13.0
-  flutter: ">=3.47.6 <3.48.0"
+  sdk: '>=3.13.0 <4.0.0'
+  flutter: '>=3.47.0 <3.48.0'
 
 dependencies:
   flutter:
